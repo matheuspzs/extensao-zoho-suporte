@@ -216,11 +216,18 @@ function awaitElementSelector(selector) {
     })
 }
 
-function createdElement(mutation) {
+async function createdElement(mutation) {
     if (mutation[0].nextSibling) {
         const notification = new Notification('Novo chamado!', {
             body: 'Chamado criado'
         })
+        if(!verifyAssignedTicket()){
+            let clickFirstItem = document.querySelector("#list_view_Cases > div:nth-child(1) > div > .fright.w315 > .posrel.listAssign > div > i")
+            clickFirstItem.click()
+            let firstTicket = document.querySelector('#list_view_Cases > div:nth-child(1)')
+            awaitElementSelector('#agentsList')
+            firstTicket.querySelector('#agentsList> div').click()
+        }
     }
 }
 
@@ -230,4 +237,30 @@ function newObserver() {
     observer.observe(chamadosList, {
         childList: true
     })
+}
+
+function verifyAssignedTicket(){
+    const agenteName = document.querySelector("#user_logoutphoto").attributes.title.value
+    var tickets = [...document.querySelectorAll("#list_view_Cases > div")]
+    const agents = tickets.map(ticket=>{
+        let selectorData = ticket.querySelector('.fright.w315 > .posrel.listAssign > div').children[0]
+        if(selectorData.attributes.title){
+            console.log(selectorData.attributes.title)
+            return selectorData.attributes.title.value
+        }else{
+            if(selectorData.querySelector('img')){
+                console.log(selectorData.querySelector('img').attributes.title)
+                return selectorData.querySelector('img').attributes.title.value
+            }else{
+                console.log(selectorData.attributes.orgtitle.value)
+                return selectorData.attributes.orgtitle.value
+            }
+            
+        }
+    })
+    if(agents.includes(agenteName)){
+        return true
+    }else{
+        return false
+    }
 }
