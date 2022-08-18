@@ -225,7 +225,7 @@ async function createdElement(mutation) {
             let clickFirstItem = document.querySelector("#list_view_Cases > div:nth-child(1) > div > .fright.w315 > .posrel.listAssign > div > i")
             clickFirstItem.click()
             let firstTicket = document.querySelector('#list_view_Cases > div:nth-child(1)')
-            awaitElementSelector('#agentsList')
+            await awaitElementSelector('#agentsList')
             firstTicket.querySelector('#agentsList> div').click()
         }
     }
