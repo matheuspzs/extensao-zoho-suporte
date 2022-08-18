@@ -1,0 +1,23 @@
+{
+    "name": "Enviar e-mail Zoho!",
+    "description": "V1 automação envio e-mail",
+    "version": "1.0",
+    "manifest_version": 3,
+    "author": "Matheus Nascimento",
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "matches": [
+                "https://desk.zoho.com/support/waveatendimento/*"
+            ],
+            "js": [
+                "./scripts/content.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ]
+}
