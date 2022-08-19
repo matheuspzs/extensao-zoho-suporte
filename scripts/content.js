@@ -224,9 +224,8 @@ async function createdElement(mutation) {
         if(!verifyAssignedTicket()){
             let clickFirstItem = document.querySelector("#list_view_Cases > div:nth-child(1) > div > .fright.w315 > .posrel.listAssign > div > i")
             clickFirstItem.click()
-            let firstTicket = document.querySelector('#list_view_Cases > div:nth-child(1)')
-            await awaitElementSelector('#agentsList')
-            firstTicket.querySelector('#agentsList> div').click()
+            await awaitElementSelector('#list_view_Cases > div:nth-child(1) > div > .fright.w315 > .posrel.listAssign > div:nth-child(2) > div > #agents_show > #agentsList > div')
+            document.querySelector('#list_view_Cases > div:nth-child(1) > div > .fright.w315 > .posrel.listAssign > div:nth-child(2) > div > #agents_show > #agentsList > div').click()
         }
     }
 }
