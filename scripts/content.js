@@ -176,7 +176,7 @@ async function iniciar() {
             throw new Error('Permissão negada')
         }
         await awaitElementSelector('#list_view_Cases')
-        newObserver()
+        //newObserver()
     }
     main()
     window.onhashchange = async function (event) {
@@ -189,7 +189,7 @@ async function iniciar() {
                 throw new Error('Permissão negada')
             }
             await awaitElementSelector('#list_view_Cases')
-            newObserver()
+            //newObserver()
         }
 
     }
